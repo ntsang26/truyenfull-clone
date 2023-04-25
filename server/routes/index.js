@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const storyRoute = require('./story')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const routes = (app) => {
+  app.get('/', (req, res) => {
+    res.json({
+      errorCode: 0,
+      errorMessage: 'Success'
+    })
+  });
 
-module.exports = router;
+  app.use('/stories', storyRoute)
+}
+
+module.exports = routes;

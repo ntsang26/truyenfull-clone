@@ -91,6 +91,9 @@ web_modules/
 .next
 out
 
+# vscode
+.vscode
+
 # Nuxt.js build / generate output
 .nuxt
 dist
