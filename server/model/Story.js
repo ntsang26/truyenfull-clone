@@ -2,16 +2,17 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const storySchema = new Schema({
+  sid: String,
+  authorId: String,
+  categoryId: String,
   title: String,
-  author: String,
-  content: String,
-  comments: [{ body: String, date: Date }],
-  date: { type: Date, default: Date.now },
-  hidden: Boolean,
-  meta: {
-    votes: Number,
-    favs: Number
-  }
+  image: String,
+  desc: String,
+  favorites: Number,
+  chaps: Number,
+  status: String,
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
 });
 
 module.exports= mongoose.model('Story', storySchema)
