@@ -2,9 +2,7 @@ const mongoose = require("mongoose")
 
 const connect = () => {
 	mongoose
-		.connect(
-			"mongodb+srv://bogdev:iywDKj6mHWSy1pIh@bogdev-cloud.eg6vckx.mongodb.net/truyenfull-clone?retryWrites=true&w=majority",
-		)
+		.connect(process.env.MONGO_URI)
 		.then(() => {
 			console.log("MongoDB connected")
 		})
