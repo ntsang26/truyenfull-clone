@@ -11,10 +11,10 @@ const routes = (app) => {
     })
   });
 
-  app.use('/stories', storyRoute)
-  app.use('/author', authorRoute)
-  app.use('/category', categoryRoute)
-  app.use('/chap', chapRoute)
+  app.use('/api/v1/stories', storyRoute)
+  app.use('/api/v1/author', authorRoute)
+  app.use('/api/v1/category', categoryRoute)
+  app.use('/api/v1/chap', chapRoute)
 }
 
 module.exports = routes;
