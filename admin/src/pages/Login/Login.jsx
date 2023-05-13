@@ -1,98 +1,52 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Row, Button, Checkbox, Form, Input } from 'antd'
-import { api } from '../../services/api.js';
-import local from '../../services/local.js';
+import { api, local, helper } from '../../services';
+import "../../assets/css/login.css"
 
 const Login = (props) => {
-  
-  const onFinish = async (values) => {
-    let { username, password } = values
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = async () => {
+    if (!username || !password) return helper.toast('error', 'Please enter information!')
     let rs = await api.login({ username, password })
     if (rs.errorCode === 0) {
       local.set('session', rs.data?.token)
       props.history.push('/')
     }
-  };
+  }
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
+  useEffect(() => {
+    if (local.get('session')) local.clear('session')
+  }, [])
 
   return (
-    <div className='container p-5'>
-      <Row gutter={16}>
-        <Col span={16}>
-
-        </Col>
-        <Col span={8}>
-          <Form
-            name="basic"
-            labelCol={{
-              span: 8,
-            }}
-            wrapperCol={{
-              span: 16,
-            }}
-            style={{
-              maxWidth: 600,
-            }}
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-          >
-            <Form.Item
-              label="Username"
-              name="username"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your username!',
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              label="Password"
-              name="password"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your password!',
-                },
-              ]}
-            >
-              <Input.Password />
-            </Form.Item>
-
-            <Form.Item
-              name="remember"
-              valuePropName="checked"
-              wrapperCol={{
-                offset: 8,
-                span: 16,
-              }}
-            >
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
-            <Form.Item
-              wrapperCol={{
-                offset: 8,
-                span: 16,
-              }}
-            >
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Form.Item>
-          </Form>
-        </Col>
-      </Row>
+    <div className='wrapper'>
+      <div className="background">
+        <div className="shape" />
+        <div className="shape" />
+      </div>
+      <div className='form-login'>
+        <h3>Login Here</h3>
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          placeholder="Username"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          autoComplete="off"
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoComplete="off"
+        />
+        <button onClick={handleSubmit}>Log In</button>
+      </div>
     </div>
   )
 }

@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { local } from '../../services'
+import { Layout } from 'antd';
+import TheSidebar from './TheSidebar.jsx';
+import TheHeader from './TheHeader.jsx';
+import TheContent from './TheContent';
 
 const TheLayout = () => {
   const history = useHistory()
 
   useEffect(() => {
     fetchData()
-    return () => { }
   }, [history])
 
   const fetchData = () => {
@@ -23,7 +26,13 @@ const TheLayout = () => {
     }
   }
   return (
-    <div>TheLayout</div>
+    <Layout>
+      <TheSidebar />
+      <Layout>
+        <TheHeader />
+        <TheContent />
+      </Layout>
+    </Layout>
   )
 }
 

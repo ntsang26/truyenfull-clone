@@ -1,4 +1,4 @@
-import { config, helper, local } from './index'
+import { config, helper, local } from './'
 
 let request = {}
 
@@ -10,7 +10,7 @@ request.request = async ({ url, data, headers, method = 'POST', isPublic = false
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
-        Authorization: `Bearer ${local.get('session') || 'customer'}`,
+        Authorization: `Bearer ${local.get('session') || config.BASIC_TOKEN}`,
       },
     }
     option.headers = Object.assign({}, option.headers, headers)
