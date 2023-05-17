@@ -2,7 +2,7 @@ const Chap = require('../model/Chap')
 const { v4: uuidv4 } = require("uuid")
 
 const ChapController = {
-  list: async (req, res) => {
+  find: async (req, res) => {
     try {
       let { queryInput } = req.body
       let stories = await Chap.find(queryInput)

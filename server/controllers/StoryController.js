@@ -2,7 +2,7 @@ const Story = require('../model/Story')
 const { v4: uuidv4 } = require("uuid")
 
 const StoryController = {
-  list: async (req, res) => {
+  find: async (req, res) => {
     try {
       let { queryInput } = req.body
       let stories = await Story.find(queryInput)

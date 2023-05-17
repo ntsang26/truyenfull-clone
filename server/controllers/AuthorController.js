@@ -17,6 +17,21 @@ const AuthorController = {
       console.log("AuthorController", error)
       res.error()
     }
+  }, 
+  find: async (req, res) => {
+    try {
+      let { queryInput } = req.body
+      let authors = await Author.find(queryInput)
+      if (!authors.length) return res.json({ errorCode: 1, errorMsg: "No data" })
+      return res.json({
+        errorCode: 0,
+        errorMsg: "Success",
+        data: authors
+      });
+    } catch (error) {
+      console.log("AuthorController", error)
+      res.error()
+    }
   }
 }
 
