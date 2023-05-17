@@ -51,6 +51,15 @@ helper.cloneDeep = (obj) => {
   return cloneData
 }
 
+helper.getItem = (label, key, icon, children) => {
+  return {
+    key,
+    icon,
+    children,
+    label,
+  };
+}
+
 const Toast = (type, content) => {
   if (type === 'success') {
     content = content ? content : 'Success'

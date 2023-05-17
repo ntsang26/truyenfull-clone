@@ -26,11 +26,13 @@ const TheLayout = () => {
     }
   }
   return (
-    <Layout>
+    <Layout style={{minHeight: '100vh'}}>
       <TheSidebar />
       <Layout>
         <TheHeader />
-        <TheContent />
+        <Layout style={{ padding: '0 24px 24px' }}>
+          <TheContent />
+        </Layout>
       </Layout>
     </Layout>
   )

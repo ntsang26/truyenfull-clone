@@ -1,11 +1,15 @@
 import React from 'react'
-import { Avatar, Dropdown, Menu } from 'antd'
+import { Avatar, Dropdown, Menu, theme } from 'antd'
 import { Header } from 'antd/es/layout/layout.js'
 import { config, local } from '../../services'
 import { Link } from 'react-router-dom'
-import { Icons } from '../../constant/icon.jsx'
+import { Icons } from '../../constant'
 
 const TheHeader = () => {
+
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
 
   const handleConfirmLogout = () => {
     local.clear('session')
@@ -22,7 +26,7 @@ const TheHeader = () => {
     </Menu>
   )
   return (
-    <Header>
+    <Header style={{ background: colorBgContainer }}>
       <div
         style={{
           position: 'fixed',

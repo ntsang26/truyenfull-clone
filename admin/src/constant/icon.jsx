@@ -789,7 +789,7 @@ import {
   ZoomInOutlined,
   ZoomOutOutlined,
 } from '@ant-design/icons'
-export const Icons = {
+const Icons = {
   AccountBookFilled: <AccountBookFilled />,
   AccountBookOutlined: <AccountBookOutlined />,
   AccountBookTwoTone: <AccountBookTwoTone />,
@@ -1580,3 +1580,5 @@ export const Icons = {
   ZoomInOutlined: <ZoomInOutlined />,
   ZoomOutOutlined: <ZoomOutOutlined />,
 }
+
+export default Icons
